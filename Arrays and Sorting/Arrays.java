@@ -110,6 +110,28 @@ public class Arrays{
       return i+1; // i+1 is the number of unique elements 
     }
 
+// =============================== Majority ele > n/2 ===========================
+    static int majorityElement(int arr[], int size)
+    {
+       int cnt = 0;
+        int el = 0;
+        for( int i = 0 ; i < arr.length ; i++){
+            if( cnt == 0){
+                el = arr[i];
+                cnt = 1; // set new count for potential majority ele
+            }else if( arr[i] == el){
+                cnt++; // increment count
+            }else{
+                cnt--;
+            }
+        }
+      // now el stores potential majority element
+       int cnt1 = 0;
+       for( int val : arr){
+           if( el == val) cnt1++;
+       }
+       return cnt1 > arr.length/2 ? el : -1;
+    }
 
 
 }
